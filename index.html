@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mermaid.js Renderer</title>
+    <!-- Mermaid.js の CDN リンク -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.4.0/dist/mermaid.min.js"></script>
+    <style>
+        /* シンプルなスタイリング */
+        #container {
+            display: flex;
+        }
+        #mermaidInput, #mermaidOutput {
+            flex: 1;
+            padding: 10px;
+        }
+        #mermaidInput {
+            border-right: 1px solid #ddd;
+        }
+        textarea {
+            width: 100%;
+            height: 400px;
+        }
+        #mermaidOutput {
+            border-left: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="mermaidInput">
+            <h3>Mermaid.js コード入力</h3>
+            <textarea id="inputArea"></textarea>
+            <button onclick="renderMermaid()">レンダリング</button>
+        </div>
+        <div id="mermaidOutput">
+            <h3>レンダリング結果</h3>
+            <div id="outputDiv"></div>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({startOnLoad:false});
+
+        function renderMermaid() {
+            var input = document.getElementById("inputArea").value;
+            var outputDiv = document.getElementById("outputDiv");
+            outputDiv.innerHTML = input;
+            mermaid.init(undefined, outputDiv);
+        }
+    </script>
+</body>
+</html>
